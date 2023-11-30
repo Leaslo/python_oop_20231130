@@ -82,13 +82,11 @@ while True:
 
         foglalas = szalloda.foglalas(szobaszam, datum)
 
-
         if foglalas is None:
             print("Nem található ilyen szobaszám vagy a választott szoba ebben az időben foglalt!")
         else:
             print(f"Sikeres foglalás! Az Ön foglalása: Szoba: {foglalas.szoba.szobaszam}, "
                   f"Dátuma: {foglalas.datum}, Ára: {foglalas.szoba.ar} Ft")
-
 
     elif valasztas == "2":
         szobaszam = int(input("Szobaszám: "))
@@ -105,9 +103,9 @@ while True:
             print("Nem található ilyen foglalás!")
         else:
             if szalloda.lemondas(foglalas):
-                print("Lemondás sikeres!")
+                print("Sikeresen lemondta foglalását!")
             else:
-                print("Lemondás sikertelen!")
+                print("Lemondás szándéka sikertelen!")
 
     elif valasztas == "3":
         szalloda.foglalasok_listazasa()
