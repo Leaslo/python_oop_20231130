@@ -1,22 +1,27 @@
 from datetime import datetime
 
+
 class Szoba:
     def __init__(self, ar, szobaszam):
         self.ar = ar
         self.szobaszam = szobaszam
 
+
 class EgyagyasSzoba(Szoba):
     def __init__(self, szobaszam):
         super().__init__(ar=12000, szobaszam=szobaszam)
+
 
 class KetagyasSzoba(Szoba):
     def __init__(self, szobaszam):
         super().__init__(ar=18000, szobaszam=szobaszam)
 
+
 class Foglalas:
     def __init__(self, szoba, datum):
         self.szoba = szoba
         self.datum = datum
+
 
 class Szalloda:
     def __init__(self, nev, szobak, foglalasok):
@@ -47,6 +52,7 @@ class Szalloda:
     def foglalasok_listazasa(self):
         for foglalas in self.foglalasok:
             print(f"Szoba száma: {foglalas.szoba.szobaszam}, Dátum: {foglalas.datum}")
+
 
 szobak = [EgyagyasSzoba(1), KetagyasSzoba(2), EgyagyasSzoba(3)]
 foglalasok = [
@@ -81,7 +87,7 @@ while True:
 
     elif valasztas == "2":
         szobaszam = int(input("Szobaszám: "))
-        datum_str = input("Dátum (yyyy-mm-dd): ")
+        datum_str = input("Dátum (Év-Hónap-Nap): ")
         datum = datetime.strptime(datum_str, "%Y-%m-%d")
 
         foglalas = None
@@ -91,7 +97,7 @@ while True:
                 break
 
         if foglalas is None:
-            print("Nem található ilyen foglalás.")
+            print("Nem található ilyen foglalás!")
         else:
             if szalloda.lemondas(foglalas):
                 print("Lemondás sikeres!")
@@ -105,4 +111,4 @@ while True:
         break
 
     else:
-        print("Érvénytelen művelet.")
+        print("Érvénytelen művelet!")
