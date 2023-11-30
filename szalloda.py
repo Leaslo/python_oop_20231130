@@ -51,7 +51,7 @@ class Szalloda:
 
     def foglalasok_listazasa(self):
         for foglalas in self.foglalasok:
-            print(f"Szoba száma: {foglalas.szoba.szobaszam}, Dátum: {foglalas.datum}")
+            print(f"Foglalt szoba száma: {foglalas.szoba.szobaszam}, Dátuma: {foglalas.datum}")
 
 
 szobak = [EgyagyasSzoba(1), KetagyasSzoba(2), EgyagyasSzoba(3)]
@@ -65,6 +65,7 @@ foglalasok = [
 szalloda = Szalloda("OOP Szálloda", szobak, foglalasok)
 
 while True:
+    print(f"Üdvözöljük a {szalloda.nev} oldalán!")
     print("Válasszon az alábbi műveletek közül!:")
     print("1 - Szoba foglalása")
     print("2 - Foglalás lemondása")
@@ -74,16 +75,20 @@ while True:
     valasztas = input("Kiválasztott menü: ")
 
     if valasztas == "1":
+
         szobaszam = int(input("Szobaszám(1-2-3): "))
         datum_str = input("Dátum (Év-Hónap-Nap): ")
         datum = datetime.strptime(datum_str, "%Y-%m-%d")
 
         foglalas = szalloda.foglalas(szobaszam, datum)
 
+
         if foglalas is None:
             print("Nem található ilyen szobaszám vagy a választott szoba ebben az időben foglalt!")
         else:
-            print("Sikeres foglalás!")
+            print(f"Sikeres foglalás! Az Ön foglalása: Szoba: {foglalas.szoba.szobaszam}, "
+                  f"Dátuma: {foglalas.datum}, Ára: {foglalas.szoba.ar} Ft")
+
 
     elif valasztas == "2":
         szobaszam = int(input("Szobaszám: "))
